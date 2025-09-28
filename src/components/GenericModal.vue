@@ -54,7 +54,7 @@
                   class="w-full border-none rounded-md cursor-pointer font-medium transition-all duration-200 text-sm h-10 bg-[#1b1f27] text-white hover:bg-[#1b1f27]"
                   :disabled="isLoading"
                 >
-                  {{ isLoading ? "جاري التحميل" : confirmText }}
+                  {{ isLoading ? "loading..." : confirmText }}
                 </button>
                 <button
                   v-if="showCancelButton"

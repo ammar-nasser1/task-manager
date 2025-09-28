@@ -2,7 +2,6 @@
   <div class="flex-1 w-full">
     <div class="py-6">
       <div class="mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Page header -->
         <div class="mb-8">
           <div class="flex items-center justify-between">
             <div>
@@ -35,12 +34,10 @@
           </div>
         </div>
 
-        <!-- Filters and Controls -->
         <div class="mb-6 bg-white rounded-lg shadow p-4">
           <div
             class="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0"
           >
-            <!-- Category Filter -->
             <div class="flex items-center space-x-4">
               <label
                 for="category-filter"
@@ -64,7 +61,6 @@
               </select>
             </div>
 
-            <!-- Completion Status Filter -->
             <div class="flex items-center space-x-4">
               <label
                 for="status-filter"
@@ -83,7 +79,6 @@
               </select>
             </div>
 
-            <!-- Priority Filter -->
             <div class="flex items-center space-x-4">
               <label
                 for="priority-filter"
@@ -105,7 +100,6 @@
           </div>
         </div>
 
-        <!-- Loading state -->
         <div v-if="loading" class="text-center py-12">
           <div
             class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"
@@ -113,7 +107,6 @@
           <p class="mt-4 text-gray-600">Loading tasks...</p>
         </div>
 
-        <!-- Error state -->
         <div
           v-if="error"
           class="bg-red-50 border border-red-200 rounded-md p-4 mb-6"
@@ -151,9 +144,7 @@
           </div>
         </div>
 
-        <!-- Task Grid -->
         <div v-if="!loading && !error">
-          <!-- Empty state -->
           <div v-if="tasks.length === 0" class="text-center py-12">
             <svg
               class="mx-auto h-12 w-12 text-gray-400"
@@ -201,7 +192,6 @@
             </div>
           </div>
 
-          <!-- Tasks Grid -->
           <div
             v-else
             class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
@@ -219,7 +209,6 @@
           </div>
         </div>
 
-        <!-- Pagination -->
         <div
           v-if="currentPage > 1 || hasNextPage"
           class="mt-8 flex justify-center"
@@ -262,7 +251,6 @@
       </div>
     </div>
 
-    <!-- Add Task Modal -->
     <GenericModal
       v-model="showAddModal"
       title="Add New Task"
@@ -277,7 +265,6 @@
       />
     </GenericModal>
 
-    <!-- Edit Task Modal -->
     <GenericModal
       v-model="showEditModal"
       title="Edit Task"
@@ -293,7 +280,6 @@
       />
     </GenericModal>
 
-    <!-- Task Detail Modal -->
     <GenericModal
       v-model="showDetailModal"
       :title="selectedTask?.title || 'Task Details'"
@@ -311,7 +297,6 @@
       />
     </GenericModal>
 
-    <!-- Delete Confirmation Modal -->
     <GenericModal
       v-model="showDeleteModal"
       title="Delete Task"
@@ -360,34 +345,28 @@ import TaskCard from "/src/components/TaskCard.vue";
 import TaskForm from "/src/components/TaskForm.vue";
 import TaskDetail from "/src/components/TaskDetail.vue";
 
-// Reactive data
 const loading = ref(false);
 const error = ref(null);
 const tasks = ref([]);
 const categories = ref([]);
 
-// Pagination
 const currentPage = ref(1);
 const tasksPerPage = ref(8);
 const hasNextPage = ref(true);
 
-// Filters
 const selectedCategory = ref("");
 const selectedStatus = ref("");
 const selectedPriority = ref("");
 
-// Modals
 const showAddModal = ref(false);
 const showEditModal = ref(false);
 const showDetailModal = ref(false);
 const showDeleteModal = ref(false);
 const selectedTask = ref(null);
 
-// Loading states
 const formLoading = ref(false);
 const deleteLoading = ref(false);
 
-// Computed properties
 const hasFilters = computed(() => {
   return (
     selectedCategory.value ||
@@ -396,26 +375,21 @@ const hasFilters = computed(() => {
   );
 });
 
-// Helper functions
 const getCategoryById = (categoryId) => {
   return categories.value.find((cat) => cat.id === categoryId) || null;
 };
 
-// Build query parameters for API
 const buildQueryParams = () => {
   const params = new URLSearchParams();
 
-  // Pagination
   params.append("limit", tasksPerPage.value.toString());
   params.append(
     "offset",
     ((currentPage.value - 1) * tasksPerPage.value).toString()
   );
 
-  // Ordering
   params.append("order", "created_at.desc");
 
-  // Filters
   if (selectedCategory.value) {
     params.append("category_id", `eq.${selectedCategory.value}`);
   }
@@ -431,7 +405,6 @@ const buildQueryParams = () => {
   return params.toString();
 };
 
-// API functions
 const fetchTasks = async () => {
   loading.value = true;
   error.value = null;
@@ -442,7 +415,6 @@ const fetchTasks = async () => {
 
     tasks.value = response.data || [];
 
-    // Check if there are more pages
     hasNextPage.value = tasks.value.length === tasksPerPage.value;
   } catch (err) {
     error.value = err.message || "Failed to fetch tasks";
@@ -467,7 +439,6 @@ const createTask = async (taskData) => {
   try {
     const response = await api.post("tasks", taskData);
     if (response.data && response.data.length > 0) {
-      // Refresh the current page to show the new task
       await fetchTasks();
       showAddModal.value = false;
     }
@@ -482,11 +453,6 @@ const createTask = async (taskData) => {
 const updateTask = async (taskData) => {
   try {
     const response = await api.patch(`tasks?id=eq.${taskData.id}`, {
-      // title: taskData.title,
-      // description: taskData.description,
-      // priority: taskData.priority,
-      // category_id: taskData.category_id,
-      // due_date: taskData.due_date,
       completed: taskData.completed,
     });
 
@@ -497,7 +463,6 @@ const updateTask = async (taskData) => {
         tasks.value[index] = updatedTask;
       }
 
-      // Update selectedTask if it's the same task
       if (selectedTask.value && selectedTask.value.id === updatedTask.id) {
         selectedTask.value = updatedTask;
       }
@@ -542,13 +507,11 @@ const confirmDelete = async () => {
   try {
     await api.delete(`tasks?id=eq.${selectedTask.value.id}`);
 
-    // Remove from local state
     const index = tasks.value.findIndex((t) => t.id === selectedTask.value.id);
     if (index !== -1) {
       tasks.value.splice(index, 1);
     }
 
-    // If current page becomes empty and it's not the first page, go to previous page
     if (tasks.value.length === 0 && currentPage.value > 1) {
       currentPage.value--;
       await fetchTasks();
@@ -565,7 +528,6 @@ const confirmDelete = async () => {
   }
 };
 
-// Event handlers
 const viewTask = (task) => {
   selectedTask.value = task;
   showDetailModal.value = true;
@@ -589,7 +551,6 @@ const deleteTask = (task) => {
   showDeleteModal.value = true;
 };
 
-// Pagination handlers
 const goToNextPage = () => {
   if (hasNextPage.value) {
     currentPage.value++;
@@ -602,18 +563,15 @@ const goToPreviousPage = () => {
   }
 };
 
-// Watch for filter changes to reset pagination and refetch
 watch([selectedCategory, selectedStatus, selectedPriority], () => {
   currentPage.value = 1;
   fetchTasks();
 });
 
-// Watch for page changes to refetch
 watch(currentPage, () => {
   fetchTasks();
 });
 
-// Load data when component mounts
 onMounted(() => {
   fetchTasks();
   fetchCategories();
@@ -621,7 +579,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* Custom styles for better UX */
 .transition-all {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
