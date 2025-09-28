@@ -102,26 +102,19 @@ src/
 ## Screenshots
 
 
-
-### Mobile View
-
-![Mobile Interface](screenshots/mobile-interface.png)
-_Mobile-optimized layout with collapsible sidebar_
-
 ### Task List View
-![Desktop Dashboard](screenshots/desktop-dashboard.png)
-_Main task list view with sidebar navigation and task cards_
-
+<img width="1909" height="934" alt="image" src="https://github.com/user-attachments/assets/d0e61a63-f88d-4a73-aa6a-8f56660ddb0e" />
 
 ### Task Detail View
+<img width="1909" height="934" alt="image" src="https://github.com/user-attachments/assets/795b9491-2a58-4a87-ba35-9edc2c0be54a" />
 
-![Task Detail](screenshots/task-detail.png)
-_Task detail view with edit and delete options_
 
 ### Add Task Form
 
-![Task Form](screenshots/task-form.png)
-_Task creation/editing form with validation_
+<img width="1909" height="934" alt="image" src="https://github.com/user-attachments/assets/886e4ed3-441e-4177-97a5-4884c12680f2" />
+
+### Edit Task Form
+<img width="1909" height="934" alt="image" src="https://github.com/user-attachments/assets/d5b16086-af5b-478b-859f-800b946ee387" />
 
 
 ## Technologies Used
