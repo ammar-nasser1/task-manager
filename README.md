@@ -2,6 +2,9 @@
 
 A responsive task management application built with Vue 3 and Supabase. Create, organize, and track tasks with a clean, modern interface that works seamlessly across desktop, and mobile devices.
 
+## Demo
+[Live Demo](https://taskmanger-osolutions.netlify.app/)
+
 ## Project Overview
 
 This is a responsive full-stack task management system that allows users to create, edit, and organize tasks with categories, priorities, and due dates.
