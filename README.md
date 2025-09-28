@@ -3,7 +3,6 @@
 A responsive task management application built with Vue 3 and Supabase. Create, organize, and track tasks with a clean, modern interface that works seamlessly across desktop, and mobile devices.
 
 ## Demo
-
 [Live Demo](https://taskmanger-osolutions.netlify.app/)
 
 ## Project Overview
@@ -43,8 +42,7 @@ The application will be available at `http://localhost:5173` in development mode
 
 ## Framework Choice Justification
 
-**Vue 3 over React**:
-
+**Vue 3 over React**: 
 - Vue was selected for this project due to my experience in vue in more production projects, built-in reactivity system, and component composition API.Vue's template syntax also makes it easier to build complex UI components with less boilerplate code.
 - Documentation explains everything
 
@@ -100,23 +98,24 @@ src/
 - **Error handling**: Graceful error handling with user feedback
 - **Image optimization**: Lazy loading and error fallbacks for task images
 
+
 ## Screenshots
 
-### Task List View
 
+### Task List View
 <img width="1909" height="934" alt="image" src="https://github.com/user-attachments/assets/d0e61a63-f88d-4a73-aa6a-8f56660ddb0e" />
 
 ### Task Detail View
-
 <img width="1909" height="934" alt="image" src="https://github.com/user-attachments/assets/795b9491-2a58-4a87-ba35-9edc2c0be54a" />
+
 
 ### Add Task Form
 
 <img width="1909" height="934" alt="image" src="https://github.com/user-attachments/assets/886e4ed3-441e-4177-97a5-4884c12680f2" />
 
 ### Edit Task Form
-
 <img width="1909" height="934" alt="image" src="https://github.com/user-attachments/assets/d5b16086-af5b-478b-859f-800b946ee387" />
+
 
 ## Technologies Used
 
