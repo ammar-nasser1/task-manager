@@ -1,17 +1,17 @@
 # Task Manager
 
-A responsive task management application built with Vue 3 and Supabase. Create, organize, and track your tasks with a clean, modern interface that works seamlessly across desktop, tablet, and mobile devices.
+A responsive task management application built with Vue 3 and Supabase. Create, organize, and track tasks with a clean, modern interface that works seamlessly across desktop, and mobile devices.
 
 ## Project Overview
 
-This is a full-stack task management system that allows users to create, edit, and organize tasks with categories, priorities, and due dates. The app features a responsive dashboard layout with real-time data synchronization through Supabase.
+This is a responsive full-stack task management system that allows users to create, edit, and organize tasks with categories, priorities, and due dates.
 
 ## Setup & Run Instructions
 
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/ammar-nasser1/task-manager
    cd task_manage
    ```
 
@@ -39,7 +39,9 @@ The application will be available at `http://localhost:5173` in development mode
 
 ## Framework Choice Justification
 
-**Vue 3 over React**: Vue was selected for this project due to its excellent developer experience, built-in reactivity system, and component composition API. The Composition API provides better TypeScript support and more flexible code organization compared to React hooks. Vue's template syntax also makes it easier to build complex UI components with less boilerplate code.
+**Vue 3 over React**: 
+- Vue was selected for this project due to my experience in vue in more production projects, built-in reactivity system, and component composition API.Vue's template syntax also makes it easier to build complex UI components with less boilerplate code.
+- Documentation explains everything
 
 ## State Management Approach
 
@@ -72,8 +74,6 @@ src/
 └── assets/                # Static assets
 ```
 
-This README provides a comprehensive overview of your Vue 3 task management application, written in a natural frontend developer tone without emojis or generic fluff. It accurately reflects the project structure, features, and technical decisions based on the codebase analysis.
-
 ## Features Implemented
 
 ### Core Features
@@ -90,72 +90,36 @@ This README provides a comprehensive overview of your Vue 3 task management appl
 
 - **Pagination**: Efficient task loading with page-based navigation
 - **Filtering**: Filter tasks by category, status, and priority
-- **Search functionality**: Find tasks quickly
 - **Modal system**: Reusable modal component for forms and details
 - **Loading states**: Visual feedback during API operations
 - **Error handling**: Graceful error handling with user feedback
 - **Image optimization**: Lazy loading and error fallbacks for task images
-- **Touch-friendly interface**: Optimized for mobile interactions
 
-## Known Limitations
-
-- **No user authentication**: Currently uses anonymous Supabase access
-- **No real-time updates**: Changes require manual refresh or navigation
-- **Limited file uploads**: Only image URLs supported, no direct file upload
-- **No task dependencies**: Cannot link related tasks
-- **No bulk operations**: Cannot select and modify multiple tasks at once
-- **No data export**: Cannot export tasks to external formats
-- **No offline support**: Requires internet connection for all operations
 
 ## Screenshots
 
-### Desktop View
 
-![Desktop Dashboard](screenshots/desktop-dashboard.png)
-_Main task list view with sidebar navigation and task cards_
 
 ### Mobile View
 
 ![Mobile Interface](screenshots/mobile-interface.png)
 _Mobile-optimized layout with collapsible sidebar_
 
-### Task Detail Modal
+### Task List View
+![Desktop Dashboard](screenshots/desktop-dashboard.png)
+_Main task list view with sidebar navigation and task cards_
+
+
+### Task Detail View
 
 ![Task Detail](screenshots/task-detail.png)
 _Task detail view with edit and delete options_
 
-### Task Form
+### Add Task Form
 
 ![Task Form](screenshots/task-form.png)
 _Task creation/editing form with validation_
 
-## Future Improvements
-
-### Short-term
-
-- **User authentication**: Implement Supabase Auth for user accounts
-- **Real-time updates**: Add Supabase real-time subscriptions
-- **File uploads**: Direct image upload to Supabase Storage
-- **Bulk operations**: Multi-select and bulk edit/delete
-- **Keyboard shortcuts**: Power user shortcuts for common actions
-
-### Medium-term
-
-- **Task templates**: Pre-defined task templates for common workflows
-- **Time tracking**: Built-in timer for task duration
-- **Notifications**: Browser notifications for due dates
-- **Data export**: CSV/JSON export functionality
-- **Advanced filtering**: Date ranges, custom filters
-- **Task dependencies**: Link related tasks
-
-### Long-term
-
-- **Team collaboration**: Multi-user task sharing
-- **Project management**: Organize tasks into projects
-- **Analytics dashboard**: Task completion statistics
-- **API integration**: Connect with external tools
-- **Mobile app**: Native mobile application
-- **Offline support**: PWA with offline capabilities
 
 ## Technologies Used
 
@@ -165,5 +129,3 @@ _Task creation/editing form with validation_
 - **Tailwind CSS** - Utility-first CSS framework
 - **Axios** - HTTP client for API requests
 - **Supabase** - Backend-as-a-Service for database and API
-- **PostCSS** - CSS processing
-- **Autoprefixer** - CSS vendor prefixing
